@@ -24,6 +24,47 @@ void Users::addUser(string user_login, string user_password, string user_name) {
     _emptyUsersCount--;
 }
 
+void Users::setCurrentUserIndex(int value) {
+    if (value < -1 || value >= _filledUsersCount) {
+        value = -1;
+    }
+    _currentUserIndex = value;
+}
+
+bool Users::login() {
+    int currentUserIndex;
+    string currentUserLogin;
+    string currentUserPassword;
+
+    cout << "Введите логин:" << endl;
+    cin >> currentUserLogin;
+    currentUserIndex = this->findUserByLogin(currentUserLogin);
+    if (currentUserIndex < 0) {
+        cout << "Пользователь с таким логином не зарегистрирован!" << endl;
+        system("pause");
+        system("cls");
+        return false;
+    }
+    else {
+        cout << "Введите пароль:" << endl;
+        cin >> currentUserPassword;
+        if (this->getUserPassword(currentUserIndex) != currentUserPassword) {
+            cout << "Неверный пароль!" << endl;
+            system("pause");
+            system("cls");
+            return false;
+        }
+        else {
+            system("cls");
+            _currentUserIndex = currentUserIndex;
+            cout << this->getUserName(currentUserIndex) << ", добро пожаловать в чат!" << endl;
+            system("pause");
+            system("cls");
+            return true;
+        }
+    }
+}
+
 int Users::findUserById(int id) {
     for (int i = 0; i < _filledUsersCount; i++) {
         if (id == _users[i]->getId()) {
@@ -77,6 +118,10 @@ string Users::getUserName(int index) {
         throw Bad_range();
     }
     return _users[index]->getName();
+}
+
+int Users::getCurrentUserIndex() const {
+    return _currentUserIndex;
 }
 
 int Users::getFilledUsersCount() const {

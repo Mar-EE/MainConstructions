@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <windows.h>
-#include "Array.h"
 #include "Chat.h"
+#include "ChatEditor.h"
 #include "Users.h"
 #include "UsersEditor.h"
 
@@ -12,18 +12,13 @@ int main()
 	setlocale(LC_ALL, "");
 	SetConsoleCP(1251);
 
+	Chat* chat = new Chat();
 	Users* users = new Users();
-	Array<int> messagesToAll_UserId(100);
-	Array<string> messagesToAll_Text(100);
-	Array<int> messagesToSingleUser_Source(100);
-	Array<int> messagesToSingleUser_Dest(100);
-	Array<string> messagesToSingleUser_Text(100);
-
+	
 	char tip = 0;
 	int o = 0;
 	
 	cout << "Добро пожаловать в чат!" << endl;
-	cout << "Новая строка" << endl;
 	cout << "Выберите один из вариантов:" << endl;
 
 	while (o == 0)
@@ -49,7 +44,9 @@ int main()
 					break;
 				case '2':
 					system("cls");
-					EnterChat(users, &messagesToAll_UserId, &messagesToAll_Text, &messagesToSingleUser_Source, &messagesToSingleUser_Dest, &messagesToSingleUser_Text);
+					if (users->login()) {
+						CallChatEditor(users, chat);
+					}
 					break;
 				}
 			}
@@ -62,5 +59,7 @@ int main()
 	}
 
 	delete users;
+	delete chat;
+
 	return 0;
 }

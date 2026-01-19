@@ -104,13 +104,6 @@ public:
         return _lastIndex;
     }
 
-    X& getValue(int index) {
-        if (index < 0 || index >= _length)
-        {
-            throw Bad_range();
-        }
-        return _data[index];
-    }
 private:
     int const _increaseLength = 100;
     int _lastIndex{0};

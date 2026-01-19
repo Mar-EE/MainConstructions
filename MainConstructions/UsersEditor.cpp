@@ -62,7 +62,7 @@ void CallUsersEditor(Users* users) {
 						system("cls");
 						cout << "Количество зарегистированных пользователей: " << users->getFilledUsersCount() << endl << endl;
 						for (int i = 0; i < users->getFilledUsersCount(); i++) {
-							cout << i + 1 << ". " << users->getUserName(i) << " | ID = " << users->getUserId(i) << endl;
+							cout << "ID = " << users->getUserId(i) << " | " << users->getUserName(i) << endl;
 						}
 						cout << endl;
 						system("pause");

@@ -20,16 +20,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Chat.cpp" />
+    <ClCompile Include="ChatEditor.cpp" />
     <ClCompile Include="MainConstructions.cpp" />
-    <ClCompile Include="Message.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="Users.cpp" />
     <ClCompile Include="UsersEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chat.h" />
-    <ClInclude Include="Message.h" />
     <ClInclude Include="Array.h" />
+    <ClInclude Include="ChatEditor.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="Users.h" />
     <ClInclude Include="UsersEditor.h" />
